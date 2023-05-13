@@ -1,5 +1,6 @@
 print("\n----------------Programa de compatibilidade de candidatos----------------\n")
 candidatos = []
+notasVerificacaoCompatibilidade = []
 
 while True:
     opcao = input(
@@ -11,7 +12,7 @@ while True:
     
     if opcao == "1": 
         while True:
-            opcaoCandidatos = input(
+            opcaoCadastroCandidatos = input(
                 "\n[1] Cadastrar novo candidato\n"
                 "[2] Verificar compatibilidade de candidatos\n"
                 "[3] Ver candidatos cadastrados\n"
@@ -20,21 +21,29 @@ while True:
                 "\nInsira a opção desejada: "
             )
             
-            if opcaoCandidatos == "1": #CONTINUA O LOOP PARA ADICIONAR NOVOS CANDIDATOS
+            if opcaoCadastroCandidatos == "1": #CONTINUA O LOOP PARA ADICIONAR NOVOS CANDIDATOS
                 while True:
                     nome = input("Nome do candidato(a): ")
-                    entrevista = float(input("Nota da entrevista: "))
-                    teorico = float(input("Nota do teste teórico: "))
-                    pratico = float(input("Nota do teste prático: "))
-                    soft = float(input("Nota da avaliação de Soft Skills: "))
+                    cadastroEntrevista = float(input("Nota da entrevista: "))
+                    cadastroTeorico = float(input("Nota do teste teórico: "))
+                    cadastroPratico = float(input("Nota do teste prático: "))
+                    cadastroSoft = float(input("Nota da avaliação de Soft Skills: "))
 
-                    notas = [nome, [entrevista, teorico, pratico, soft]]
+                    notas = [nome, [cadastroEntrevista, cadastroTeorico, cadastroPratico, cadastroSoft]]
                     candidatos.append(notas)
                     print("\nUsúario cadastrado com sucesso!")
                     break  
-            elif opcaoCandidatos == "2": #ENTRA NA VERIFICAÇÃO DE CANDIDATOS
-                print("opcao2")
-            elif opcaoCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
+            elif opcaoCadastroCandidatos == "2": #ENTRA NA VERIFICAÇÃO DE CANDIDATOS
+                print("Insira abaixo as notas dos candidatos para verificar a compatibilidade\n")
+                notaEntrevista = float(input("Nota da entrevista: "))
+                notaTeorico = float(input("Nota do teste teórico: "))
+                notaPratico = float(input("Nota do teste prático: "))
+                notaSoft = float(input("Nota do teste de Soft Skills: "))
+                
+                notasInseridasVerificacao = [notaEntrevista, notaTeorico, notaPratico, notaSoft]
+                notasVerificacaoCompatibilidade.append(notasInseridasVerificacao)
+                
+            elif opcaoCadastroCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     print(f"\nNome: {candidato[0]}") #BUSCA O INDEX DO NOME DO CANDIDATO "0"
                     print(
@@ -43,9 +52,9 @@ while True:
                         f"Prático - {candidato[1][2]}\n"
                         f"Soft Skills - {candidato[1][3]}"
                     )
-            elif opcaoCandidatos == "4": #VOLTA AO MENU ANTERIOR
+            elif opcaoCadastroCandidatos == "4": #VOLTA AO MENU ANTERIOR
                 break
-            elif opcaoCandidatos == "5": #SAIR DO PROGRAMA
+            elif opcaoCadastroCandidatos == "5": #SAIR DO PROGRAMA
                 print("Você saiu do programa")
                 exit()
             else: #VERIFICA SE A OPÇÃO É VÁLIDA
