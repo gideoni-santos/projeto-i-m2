@@ -24,24 +24,36 @@ while True:
             if opcaoCadastroCandidatos == "1": #CONTINUA O LOOP PARA ADICIONAR NOVOS CANDIDATOS
                 while True:
                     nome = input("Nome do candidato(a): ")
-                    cadastroEntrevista = float(input("Nota da entrevista: "))
-                    cadastroTeorico = float(input("Nota do teste teórico: "))
-                    cadastroPratico = float(input("Nota do teste prático: "))
-                    cadastroSoft = float(input("Nota da avaliação de Soft Skills: "))
+                    cadastroEntrevista = input("Nota da entrevista: ")
+                    cadastroTeorico = input("Nota do teste teórico: ")
+                    cadastroPratico = input("Nota do teste prático: ")
+                    cadastroSoft = input("Nota da avaliação de Soft Skills: ")
 
                     notas = [nome, [cadastroEntrevista, cadastroTeorico, cadastroPratico, cadastroSoft]]
                     candidatos.append(notas)
                     print("\nUsúario cadastrado com sucesso!")
                     break  
             elif opcaoCadastroCandidatos == "2": #ENTRA NA VERIFICAÇÃO DE CANDIDATOS
-                print("Insira abaixo as notas dos candidatos para verificar a compatibilidade\n")
-                notaEntrevista = float(input("Nota da entrevista: "))
-                notaTeorico = float(input("Nota do teste teórico: "))
-                notaPratico = float(input("Nota do teste prático: "))
-                notaSoft = float(input("Nota do teste de Soft Skills: "))
-                
-                notasInseridasVerificacao = [notaEntrevista, notaTeorico, notaPratico, notaSoft]
-                notasVerificacaoCompatibilidade.append(notasInseridasVerificacao)
+                while True:
+                    print("\nInsira abaixo as notas dos candidatos para verificar a compatibilidade\n")
+                    notaEntrevista = input("Nota da entrevista: ")
+                    notaTeorico = input("Nota do teste teórico: ")
+                    notaPratico = input("Nota do teste prático: ")
+                    notaSoft = input("Nota do teste de Soft Skills: ")
+                    
+                    notasInseridasVerificacao = [notaEntrevista, notaTeorico, notaPratico, notaSoft]
+                    notasVerificacaoCompatibilidade.append(notasInseridasVerificacao)
+                    
+                    for nota in notasVerificacaoCompatibilidade:
+                        # if notasVerificacaoCompatibilidade >= candidatos[1]:
+                        #     print("Os candidatos compatíveis são: \n")
+                        #     print(f"Nome: {candidato[0]}")
+                        #     print(
+                        #         f"Entrevista - {candidato[1][0]}\n" 
+                        #         f"Teórico - {candidato[1][1]}\n"
+                        #         f"Prático - {candidato[1][2]}\n"
+                        #         f"Soft Skills - {candidato[1][3]}"
+                        #     )
                 
             elif opcaoCadastroCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
