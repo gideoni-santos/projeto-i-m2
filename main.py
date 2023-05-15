@@ -1,15 +1,15 @@
 def sairDoPrograma():
     print("Você saiu do programa.")
     exit()
-    
 
-print("\n----------------Programa de compatibilidade de candidatos----------------\n")
+
+print("\n----------------Programa de compatibilidade de candidatos----------------")
 candidatos = []
 notasVerificacaoCompatibilidade = []
 
 while True:
     opcao = input(
-        "[1] Cadastrar candidato\n"
+        "\n[1] Cadastrar candidato\n"
         "[2] Quem desenvolveu?\n"
         "[3] Sair do programa\n\n"
         "Insira a opção desejada: "
@@ -104,11 +104,17 @@ while True:
             else: #VERIFICA SE A OPÇÃO É VÁLIDA
                 print("Por favor insira um opção váida")
             
-    elif opcao == "2": 
-        print("opcao2")
-    elif opcao == "3": 
+    elif opcao == "2": #QUEM DESENVOLVEU
+        print("-"*100)
+        print(
+            "\nDesenvolvido por Gideoni Santos\n"
+            "Estudante de Data Analytics para o projeto indívidual do Modúlo 2 do curso de Data Analytics da Resilia\n"
+        )
+        print("-"*100)
+        continue
+    elif opcao == "3": #SAI DO PROGRAMA
         sairDoPrograma()
-    else:
+    else: #VERIFICA SE A OPÇÃO É VÁLIDA
         print("Por favor Insira uma opção válida")
 
     
