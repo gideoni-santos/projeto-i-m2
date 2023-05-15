@@ -1,3 +1,8 @@
+def sairDoPrograma():
+    print("Você saiu do programa.")
+    exit()
+    
+
 print("\n----------------Programa de compatibilidade de candidatos----------------\n")
 candidatos = []
 notasVerificacaoCompatibilidade = []
@@ -47,31 +52,32 @@ while True:
                     candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
                     for candidato in candidatos: #FAZ A VERIFICAÇÃO DE COMPATIBILIDADE
                         if (
-                            candidato[1] >= notaEntrevista
+                            candidato[1][0] >= notaEntrevista
                             and
-                            candidato[2] >= notaTeorico
+                            candidato[1][1] >= notaTeorico
                             and
-                            candidato[3] >= notaPratico
+                            candidato[1][2] >= notaPratico
                             and
-                            candidato[4] >= notaSoft
+                            candidato[1][3] >= notaSoft
                         ):
                             candidatosCompativeis.append(candidato) #ADICIONA APENAS OS CANDIDATOS COMPATÍVEIS NA LISTA 
                     if len(candidatosCompativeis) == 0: #INFORMA SE NÃO HOUVER CANDIDATOS NA LISTA "candidatosCompativeis"
                         print("Não há candidatos compatíveis.")
                     else:
-                        print("Os candidatos abaixo são compatíveis: ")
+                        print("\nOs candidatos abaixo são compatíveis: ")
                         for candidato in candidatosCompativeis: 
                             print(
-                                f"Nome: {candidato[0]}"
-                                f"Entrevista: {candidato[1]}"
-                                f"Teórico: {candidato[2]}"
-                                f"Prático: {candidato[3]}"
-                                f"Soft Skills: {candidato[4]}"
+                                f"Nome: {candidato[0]}\n"
+                                f"Entrevista: {candidato[1][0]}\n"
+                                f"Teórico: {candidato[1][1]}\n"
+                                f"Prático: {candidato[1][2]}\n"
+                                f"Soft Skills: {candidato[1][3]}\n"
                             )
                     menuOpcao2 = input(
-                        "[1] Fazer nova verificação"
-                        "[2] Voltar ao menu anterior"
-                        "[3] Sair"
+                        "\n[1] Fazer nova verificação\n"
+                        "[2] Voltar ao menu anterior\n"
+                        "[3] Sair\n"
+                        "Insira uma opção: "
                     )
                     
                     if menuOpcao2 == 1:
@@ -79,10 +85,9 @@ while True:
                     elif menuOpcao2 == 2:
                         break
                     elif menuOpcao2 == 3:
-                        print("Você saiu do programa")
-                        exit()
+                        sairDoPrograma()
                     else:
-                        print("Por favor insira um opção váida") 
+                        print("Por favor insira um opção válida") 
             elif opcaoCadastroCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     print(f"\nNome: {candidato[0]}") #BUSCA O INDEX DO NOME DO CANDIDATO "0"
@@ -95,17 +100,14 @@ while True:
             elif opcaoCadastroCandidatos == "4": #VOLTA AO MENU ANTERIOR
                 break
             elif opcaoCadastroCandidatos == "5": #SAIR DO PROGRAMA
-                print("Você saiu do programa")
-                exit()
+                sairDoPrograma()
             else: #VERIFICA SE A OPÇÃO É VÁLIDA
                 print("Por favor insira um opção váida")
             
     elif opcao == "2": 
         print("opcao2")
-        
     elif opcao == "3": 
-        print("opcao3")
-        
+        sairDoPrograma()
     else:
         print("Por favor Insira uma opção válida")
 
