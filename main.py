@@ -24,9 +24,10 @@ while True: #MENU INICIAL
             opcaoCadastroCandidatos = input(
                 "\n[1] Cadastrar candidato\n"
                 "[2] Verificar compatibilidade de candidatos\n"
-                "[3] Ver candidatos cadastrados\n"
-                "[4] Voltar ao menu aterior\n"
-                "[5] Encerrar programa\n"
+                "[3] Remover candidato\n"
+                "[4] Ver candidatos cadastrados\n"
+                "[5] Voltar ao menu aterior\n"
+                "[6] Encerrar programa\n"
                 "Insira a opção desejada: "
             )
             
@@ -94,9 +95,40 @@ while True: #MENU INICIAL
                     elif menuOpcao2 == "3": #SAIR DO PROGRAMA
                         sairDoPrograma()
                     else: #VERIFICA SE A OPÇÃO É VÁLIDA
-                        print("Por favor insira um opção válida") 
+                        print("Por favor insira um opção válida")             
+            elif opcaoCadastroCandidatos == "3": #OPCAO DE REMOVER CANDIDATOS
+                while True:
+                    opcaoRemoverCandidato = input(
+                        "\n[1] Remover por candidato\n"
+                        "[2] Apagar todos\n"
+                        "[3] Voltar ao menu anterior\n"
+                        "[4] Sair do programa\n"
+                        "Insira a opção desejada: "
+                    )
+                    
+                    if opcaoRemoverCandidato == "1": #REMOVER PELO NOME DO CANDIDATO
+                        print(candidatos)
+                        removerCandidato = input("Insira o nome do candidato(a) que você quer remover: ")
+                        candidato_removido = False
+                        for candidato in candidatos[:]:
+                            if removerCandidato == candidato[0]:
+                                candidatos.remove(candidato)
+                                candidato_removido = True
+                        if candidato_removido:
+                            linha()
+                            print("Candidato removido com sucesso!")
+                            print(candidatos)
+                            linha()
+                        else:
+                            print("Não existe nenhum candidato cadastrado.")
+                            continue
                         
-            elif opcaoCadastroCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
+            elif opcaoCadastroCandidatos == "4": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
+                if len(candidatos) == 0:
+                    linha()
+                    print("Não há candidatos cadastrados")
+                    linha()
+                    continue
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     linha()
                     print(f"\nNome: {candidato[0]}") #BUSCA O INDEX DO NOME DO CANDIDATO "0"
@@ -107,12 +139,14 @@ while True: #MENU INICIAL
                         f"Soft Skills - {candidato[1][3]}"
                     )
                 linha()
-            elif opcaoCadastroCandidatos == "4": #VOLTA AO MENU ANTERIOR
+            elif opcaoCadastroCandidatos == "5": #VOLTA AO MENU ANTERIOR
                 break
-            elif opcaoCadastroCandidatos == "5": #SAIR DO PROGRAMA
+            elif opcaoCadastroCandidatos == "6": #SAIR DO PROGRAMA
                 sairDoPrograma()
             else: #VERIFICA SE A OPÇÃO É VÁLIDA
+                linha()
                 print("Por favor insira um opção váida")
+                linha()
             
     elif opcao == "2": #QUEM DESENVOLVEU
         print("-"*100)
