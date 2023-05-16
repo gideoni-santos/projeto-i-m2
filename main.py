@@ -6,18 +6,20 @@ def linha():
     print("-"*100)
 
 print("\n----------------Programa de compatibilidade de candidatos----------------")
-candidatos = []
-notasVerificacaoCompatibilidade = []
 
-while True:
+candidatos = [] #LISTA DE CANDIDATOS CADASTRADOS
+notasVerificacaoCompatibilidade = [] #LISTA DAS NOTAS INPUTADAS PARA VERIFICAÇÃO DE COMPATIBILIDADE
+candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
+
+while True: #MENU INICIAL
     opcao = input(
         "\n[1] Área de candidatos\n"
         "[2] Quem desenvolveu?\n"
-        "[3] Sair do programa\n\n"
+        "[3] Sair do programa\n"
         "Insira a opção desejada: "
     )
     
-    if opcao == "1": 
+    if opcao == "1": #ENTRA NA AREA DE CANDIDATOS
         while True:
             opcaoCadastroCandidatos = input(
                 "\n[1] Cadastrar candidato\n"
@@ -28,7 +30,7 @@ while True:
                 "Insira a opção desejada: "
             )
             
-            if opcaoCadastroCandidatos == "1": #CONTINUA O LOOP PARA ADICIONAR NOVOS CANDIDATOS
+            if opcaoCadastroCandidatos == "1": #LOOP PARA ADICIONAR NOVOS CANDIDATOS
                 while True:
                     nome = input("\nNome do candidato(a): ")
                     cadastroEntrevista = float(input("Nota da entrevista: "))
@@ -53,7 +55,6 @@ while True:
                     notasInseridasVerificacao = [notaEntrevista, notaTeorico, notaPratico, notaSoft]
                     notasVerificacaoCompatibilidade.append(notasInseridasVerificacao)
                     
-                    candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
                     for candidato in candidatos: #FAZ A VERIFICAÇÃO DE COMPATIBILIDADE
                         if (
                             candidato[1][0] >= notaEntrevista
@@ -70,7 +71,7 @@ while True:
                         print("\nNão há candidatos compatíveis.")
                         linha()
                     else:
-                        print("\nOs candidatos abaixo são compatíveis: \n")
+                        print("\nOs candidatos abaixo são compatíveis: \n") #MOSTRA OS CANDIDATOS COMPATÍVEIS
                         for candidato in candidatosCompativeis: 
                             print(
                                 f"Nome: {candidato[0]}\n"
@@ -86,15 +87,15 @@ while True:
                         "[3] Sair\n"
                         "Insira uma opção: "
                     )
-                    
-                    if menuOpcao2 == "1":
+                    if menuOpcao2 == "1": #NOVA VERIFICAÇÃO
                         continue
-                    elif menuOpcao2 == "2":
+                    elif menuOpcao2 == "2": #VOLTA AO MENU ANTERIOR
                         break
-                    elif menuOpcao2 == "3":
+                    elif menuOpcao2 == "3": #SAIR DO PROGRAMA
                         sairDoPrograma()
-                    else:
+                    else: #VERIFICA SE A OPÇÃO É VÁLIDA
                         print("Por favor insira um opção válida") 
+                        
             elif opcaoCadastroCandidatos == "3": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     linha()
