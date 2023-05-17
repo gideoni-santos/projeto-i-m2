@@ -19,7 +19,6 @@ def verificaSeListaCandidatosEstaVazia():
 print("\n----------------Programa de compatibilidade de candidatos----------------")
 
 candidatos = [] #LISTA DE CANDIDATOS CADASTRADOS
-candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
 
 while True: #MENU INICIAL
     opcao = input(
@@ -59,6 +58,7 @@ while True: #MENU INICIAL
                 if verificaSeListaCandidatosEstaVazia():
                     continue
                 while True:
+                    candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
                     print("\nInsira abaixo as notas dos candidatos para verificar a compatibilidade\n")
                     notaEntrevista = float(input("Nota da entrevista: "))
                     notaTeorico = float(input("Nota do teste teórico: "))
@@ -76,6 +76,7 @@ while True: #MENU INICIAL
                             candidato[1][3] >= notaSoft
                         ):
                             candidatosCompativeis.append(candidato) #ADICIONA APENAS OS CANDIDATOS COMPATÍVEIS NA LISTA 
+                    
                     if len(candidatosCompativeis) == 0: #INFORMA SE NÃO HOUVER CANDIDATOS NA LISTA "candidatosCompativeis"
                         linha()
                         print("\nNão há candidatos compatíveis.")
@@ -91,7 +92,7 @@ while True: #MENU INICIAL
                                 f"Soft Skills: {candidato[1][3]}\n"
                                 f"Notas: e{candidato[1][0]}_t{candidato[1][1]}_p{candidato[1][2]}_s{candidato[1][3]}" # FORMATO DAS NOTAS DE ACORDO COM O PROJETO
                             )
-                    linha()
+                            linha()
                     menuOpcao2 = input(
                         "\n[1] Fazer nova verificação\n"
                         "[2] Voltar ao menu anterior\n"
@@ -124,7 +125,6 @@ while True: #MENU INICIAL
                         for candidato in candidatos[:]: #SLICING - CRIA UMA COPIA DE 'candidatos'
                             if removerCandidato == candidato[0]: #INDICE 0 REFERE-SE AO NOME DO CANDIDATOS
                                 candidatos.remove(candidato) #REMOVE O CANDIDATO DA LISTA 'candidatos'
-                                candidatosCompativeis.remove(candidato)
                                 candidato_removido = True #SE A CONDICAO FOR VERDADEIRA 
                         if candidato_removido: #SE O CODIGO ACIMA DEFINIR A VARIAVEL COMO TRUE O CANDIDATO FOI REMOVIDO
                             linha()
