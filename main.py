@@ -1,20 +1,4 @@
-def sairDoPrograma():
-    print("Você saiu do programa.")
-    exit()
-
-def linha():
-    print("-"*100)
-    
-def verificaSeListaCandidatosEstaVazia(): 
-#CASO A PESSOA ENTRE EM ALGUMA OPCAO QUE PRECISE DE CANDIDATOS CADASTRADOS, ELE SERÁ RETORNADO AO MENU NATERIOR
-    if len(candidatos) == 0:
-        linha()
-        print("Não há candidatos cadastrados.")
-        linha()
-        return True
-    else:
-        return False
-    
+from biblioteca import *
 
 print("\n----------------Programa de compatibilidade de candidatos----------------")
 
@@ -55,7 +39,7 @@ while True: #MENU INICIAL
                     linha()
                     break  
             elif opcaoCadastroCandidatos == "2": #ENTRA NA VERIFICAÇÃO DE CANDIDATOS
-                if verificaSeListaCandidatosEstaVazia():
+                if verificaSeListaCandidatosEstaVazia(candidatos):
                     continue
                 while True:
                     candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
@@ -109,7 +93,7 @@ while True: #MENU INICIAL
                         print("Por favor insira um opção válida")  
                                    
             elif opcaoCadastroCandidatos == "3": #OPCAO DE REMOVER CANDIDATOS
-                if verificaSeListaCandidatosEstaVazia():
+                if verificaSeListaCandidatosEstaVazia(candidatos):
                     continue
                 while True:
                     opcaoRemoverCandidato = input(
@@ -164,7 +148,7 @@ while True: #MENU INICIAL
                         linha()
                         
             elif opcaoCadastroCandidatos == "4": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
-                if verificaSeListaCandidatosEstaVazia():
+                if verificaSeListaCandidatosEstaVazia(candidatos):
                     continue
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     linha()
