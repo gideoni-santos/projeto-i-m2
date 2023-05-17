@@ -19,7 +19,6 @@ def verificaSeListaCandidatosEstaVazia():
 print("\n----------------Programa de compatibilidade de candidatos----------------")
 
 candidatos = [] #LISTA DE CANDIDATOS CADASTRADOS
-notasVerificacaoCompatibilidade = [] #LISTA DAS NOTAS INPUTADAS PARA VERIFICAÇÃO DE COMPATIBILIDADE
 candidatosCompativeis = [] #ADICIONA APENAS OS CANDIDATOS COMPATIVEIS
 
 while True: #MENU INICIAL
@@ -66,9 +65,6 @@ while True: #MENU INICIAL
                     notaPratico = float(input("Nota do teste prático: "))
                     notaSoft = float(input("Nota do teste de Soft Skills: "))
                     
-                    notasInseridasVerificacao = [notaEntrevista, notaTeorico, notaPratico, notaSoft]
-                    notasVerificacaoCompatibilidade.append(notasInseridasVerificacao)
-                    
                     for candidato in candidatos: #FAZ A VERIFICAÇÃO DE COMPATIBILIDADE
                         if (
                             candidato[1][0] >= notaEntrevista
@@ -93,6 +89,7 @@ while True: #MENU INICIAL
                                 f"Teórico: {candidato[1][1]}\n"
                                 f"Prático: {candidato[1][2]}\n"
                                 f"Soft Skills: {candidato[1][3]}\n"
+                                f"Notas: e{candidato[1][0]}_t{candidato[1][1]}_p{candidato[1][2]}_s{candidato[1][3]}" # FORMATO DAS NOTAS DE ACORDO COM O PROJETO
                             )
                     linha()
                     menuOpcao2 = input(
