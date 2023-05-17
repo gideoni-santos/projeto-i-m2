@@ -4,6 +4,17 @@ def sairDoPrograma():
 
 def linha():
     print("-"*100)
+    
+def verificaSeListaCandidatosEstaVazia(): 
+#CASO A PESSOA ENTRE EM ALGUMA OPCAO QUE PRECISE DE CANDIDATOS CADASTRADOS, ELE SERÁ RETORNADO AO MENU NATERIOR
+    if len(candidatos) == 0:
+        linha()
+        print("Não há candidatos cadastrados.")
+        linha()
+        return True
+    else:
+        return False
+    
 
 print("\n----------------Programa de compatibilidade de candidatos----------------")
 
@@ -33,7 +44,7 @@ while True: #MENU INICIAL
             
             if opcaoCadastroCandidatos == "1": #LOOP PARA ADICIONAR NOVOS CANDIDATOS
                 while True:
-                    nome = input("\nNome do candidato(a): ")
+                    nome = input("\nNome do candidato(a): ").title()
                     cadastroEntrevista = float(input("Nota da entrevista: "))
                     cadastroTeorico = float(input("Nota do teste teórico: "))
                     cadastroPratico = float(input("Nota do teste prático: "))
@@ -42,10 +53,12 @@ while True: #MENU INICIAL
                     notas = [nome, [cadastroEntrevista, cadastroTeorico, cadastroPratico, cadastroSoft]]
                     candidatos.append(notas)
                     linha()
-                    print("Usúario cadastrado com sucesso!")
+                    print("Candidato cadastrado com sucesso!")
                     linha()
                     break  
             elif opcaoCadastroCandidatos == "2": #ENTRA NA VERIFICAÇÃO DE CANDIDATOS
+                if verificaSeListaCandidatosEstaVazia():
+                    continue
                 while True:
                     print("\nInsira abaixo as notas dos candidatos para verificar a compatibilidade\n")
                     notaEntrevista = float(input("Nota da entrevista: "))
@@ -95,39 +108,66 @@ while True: #MENU INICIAL
                     elif menuOpcao2 == "3": #SAIR DO PROGRAMA
                         sairDoPrograma()
                     else: #VERIFICA SE A OPÇÃO É VÁLIDA
-                        print("Por favor insira um opção válida")             
+                        print("Por favor insira um opção válida")  
+                                   
             elif opcaoCadastroCandidatos == "3": #OPCAO DE REMOVER CANDIDATOS
+                if verificaSeListaCandidatosEstaVazia():
+                    continue
                 while True:
                     opcaoRemoverCandidato = input(
-                        "\n[1] Remover por candidato\n"
+                        "\n[1] Remover por nome\n"
                         "[2] Apagar todos\n"
                         "[3] Voltar ao menu anterior\n"
                         "[4] Sair do programa\n"
                         "Insira a opção desejada: "
                     )
-                    
                     if opcaoRemoverCandidato == "1": #REMOVER PELO NOME DO CANDIDATO
-                        print(candidatos)
-                        removerCandidato = input("Insira o nome do candidato(a) que você quer remover: ")
-                        candidato_removido = False
-                        for candidato in candidatos[:]:
-                            if removerCandidato == candidato[0]:
-                                candidatos.remove(candidato)
-                                candidato_removido = True
-                        if candidato_removido:
+                        removerCandidato = input("Insira o nome do candidato(a) que você quer remover: ").title()
+                        candidato_removido = False #É USADA PARA DEFINIR SE O CANDIDATO FOI REMOVIDO OU NÃO
+                        for candidato in candidatos[:]: #SLICING - CRIA UMA COPIA DE 'candidatos'
+                            if removerCandidato == candidato[0]: #INDICE 0 REFERE-SE AO NOME DO CANDIDATOS
+                                candidatos.remove(candidato) #REMOVE O CANDIDATO DA LISTA 'candidatos'
+                                candidatosCompativeis.remove(candidato)
+                                candidato_removido = True #SE A CONDICAO FOR VERDADEIRA 
+                        if candidato_removido: #SE O CODIGO ACIMA DEFINIR A VARIAVEL COMO TRUE O CANDIDATO FOI REMOVIDO
                             linha()
                             print("Candidato removido com sucesso!")
-                            print(candidatos)
                             linha()
                         else:
-                            print("Não existe nenhum candidato cadastrado.")
+                            linha()
+                            print(f"Não existe nenhum candidato {removerCandidato} cadastrado.")
+                            linha()
                             continue
+                    elif opcaoRemoverCandidato == "2": #APAGA TODA A LISTA 'candidatos' E 'candidatosCompativeis'
+                        confirmacaoApagarTudo = input("Tem certeza que deseja apagar todos os candidatos cadastrados? (S/N)").upper()
+                        if confirmacaoApagarTudo == "S":
+                            candidatos.clear()
+                            candidatosCompativeis.clear()
+                            linha()
+                            print("Todos os registros de candidatos foram apagados.")
+                            linha()
+                            break
+                        elif confirmacaoApagarTudo == "N":
+                            linha()
+                            print("Ação cancelada")
+                            linha()
+                            break
+                        else:
+                            linha()
+                            print("Por favor insira um opção válida")
+                            linha()
+                            continue
+                    elif opcaoRemoverCandidato == "3": #VOLTA AO MENU ANTERIOR
+                        break
+                    elif opcaoRemoverCandidato == "4": # SAIR DO PROGRAMA
+                        sairDoPrograma()
+                    else: #VERIFICA SE OPÇÃO É VÁLIDA
+                        linha()
+                        print("Por favor insira um opção váida")
+                        linha()
                         
             elif opcaoCadastroCandidatos == "4": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
-                if len(candidatos) == 0:
-                    linha()
-                    print("Não há candidatos cadastrados")
-                    linha()
+                if verificaSeListaCandidatosEstaVazia():
                     continue
                 for candidato in candidatos: #MOSTRA A LISTA DE CANDIDATOS MAIS FÁCIL DE LER
                     linha()
@@ -160,6 +200,3 @@ while True: #MENU INICIAL
         sairDoPrograma()
     else: #VERIFICA SE A OPÇÃO É VÁLIDA
         print("Por favor Insira uma opção válida")
-
-    
-    
