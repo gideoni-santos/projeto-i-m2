@@ -12,7 +12,7 @@ while True: #MENU INICIAL
         "Insira a opção desejada: "
     )
     
-    if opcao == "1": #ENTRA NA AREA DE CANDIDATOS
+    if opcao == "1": #ENTRA NA AREA DE CANDIDATOS 
         while True:
             opcaoCadastroCandidatos = input(
                 "\n[1] Cadastrar candidato\n"
@@ -90,8 +90,7 @@ while True: #MENU INICIAL
                     elif menuOpcao2 == "3": #SAIR DO PROGRAMA
                         sairDoPrograma()
                     else: #VERIFICA SE A OPÇÃO É VÁLIDA
-                        print("Por favor insira um opção válida")  
-                                   
+                        print("Por favor insira um opção válida")                 
             elif opcaoCadastroCandidatos == "3": #OPCAO DE REMOVER CANDIDATOS
                 if verificaSeListaCandidatosEstaVazia(candidatos):
                     continue
@@ -146,7 +145,6 @@ while True: #MENU INICIAL
                         linha()
                         print("Por favor insira um opção váida")
                         linha()
-                        
             elif opcaoCadastroCandidatos == "4": #MOSTRA OS CANDIDATOS CADASTRADOS NA LISTA "CANDIDATOS"
                 if verificaSeListaCandidatosEstaVazia(candidatos):
                     continue
@@ -159,6 +157,9 @@ while True: #MENU INICIAL
                         f"Prático - {candidato[1][2]}\n"
                         f"Soft Skills - {candidato[1][3]}"
                     )
+                numeroDeCandidatosCadastrados = len(candidatos)
+                linha()
+                print(f"Total de candidatos cadastrados: {numeroDeCandidatosCadastrados}")
                 linha()
             elif opcaoCadastroCandidatos == "5": #VOLTA AO MENU ANTERIOR
                 break
