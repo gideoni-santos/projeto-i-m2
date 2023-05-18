@@ -2,8 +2,10 @@
 
 >### O que é?
 O programa desenvolvido neste projeto tem como princípal objetivo a verificação de candidatos para uma vaga. Os critérios para determinar se o candidato está apto ou não, são as notas que ele recebeu em testes, são eles: **Entrevista**, **teste teórico**, **teste prático** e avaliação de **Soft Skills**. **Use os números referentes a cada opção para navegar entre os menus**
-![Getting Started](./img/1.png) ![Getting Started](./img/2.png)
-_Menu inicial_ / _Menu "Área de candidatos"_
+![Getting Started](./img/1.png)
+_Menu inicial_
+![Getting Started](./img/2.png)
+_Menu "Área de candidatos"_
 
 >### Como funciona?
 1. Com as notas já estabelecidas, vá para a área de "**Cadastrar candidatos**", nela é possível cadastrar os candidatos inserindo seu nome e as notas dos testes realizados respectivamente. **Use os números referentes a cada opção para navegar entre os menus**
