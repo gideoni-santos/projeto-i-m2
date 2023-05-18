@@ -3,6 +3,7 @@ from biblioteca import *
 print("\n----------------Programa de compatibilidade de candidatos----------------")
 
 candidatos = [] #LISTA DE CANDIDATOS CADASTRADOS
+candidatosCompativeis = []
 
 while True: #MENU INICIAL
     opcao = input(
@@ -103,7 +104,7 @@ while True: #MENU INICIAL
                         "Insira a opção desejada: "
                     )
                     if opcaoRemoverCandidato == "1": #REMOVER PELO NOME DO CANDIDATO
-                        removerCandidato = input("Insira o nome do candidato(a) que você quer remover: ").title()
+                        removerCandidato = input("\nInsira o nome do candidato(a) que você quer remover: ").title()
                         candidato_removido = False #É USADA PARA DEFINIR SE O CANDIDATO FOI REMOVIDO OU NÃO
                         for candidato in candidatos[:]: #SLICING - CRIA UMA COPIA DE 'candidatos'
                             if removerCandidato == candidato[0]: #INDICE 0 REFERE-SE AO NOME DO CANDIDATOS
