@@ -40,3 +40,8 @@ _Confirme se realmente você quer apagar todos os candidatos cadastrados._
 
 >![Getting Started](./img/vercandidato.png)<br>
 _Mostra todos os candidatos cadastrados seguido de suas respectivas notas e a quantidade total de candidatos_
+<br>
+<br>
+<br>
+
+![Getting Started](./img/resilia.png)
